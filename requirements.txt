@@ -1,0 +1,4 @@
+Django==1.11.20
+pytz==2022.1
+selenium==3.14.1
+urllib3==1.26.9
