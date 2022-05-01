@@ -18,12 +18,12 @@ class AndItemModelsTest(TestCase):
 
         first_item = Item()
         first_item.text = 'The first (ever) list item'
-        first_item.item_list = list_
+        first_item.parent_list = list_
         first_item.save()
 
         second_item = Item()
         second_item.text = 'Item the second'
-        second_item.item_list = list_
+        second_item.parent_list = list_
         second_item.save()
 
         saved_list = List.objects.first()
@@ -35,9 +35,9 @@ class AndItemModelsTest(TestCase):
         first_saved_item = saved_items[0]
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.text, 'The first (ever) list item')
-        self.assertEqual(first_saved_item.item_list, list_)
+        self.assertEqual(first_saved_item.parent_list, list_)
         self.assertEqual(second_saved_item.text, 'Item the second')
-        self.assertEqual(second_saved_item.item_list, list_)
+        self.assertEqual(second_saved_item.parent_list, list_)
 
 class ListViewTest(TestCase):
 
@@ -48,12 +48,12 @@ class ListViewTest(TestCase):
 
     def test_displays_only_items_for_that_list(self):
         correct_list = List.objects.create()
-        Item.objects.create(text = 'itemey 1', item_list = correct_list)
-        Item.objects.create(text = 'itemey 2', item_list = correct_list)
+        Item.objects.create(text = 'itemey 1', parent_list = correct_list)
+        Item.objects.create(text = 'itemey 2', parent_list = correct_list)
 
         other_list = List.objects.create()
-        Item.objects.create(text = 'other list item 1', item_list = other_list)
-        Item.objects.create(text = 'other list item 2', item_list = other_list)
+        Item.objects.create(text = 'other list item 1', parent_list = other_list)
+        Item.objects.create(text = 'other list item 2', parent_list = other_list)
 
         response = self.client.get(f'/lists/{correct_list.id}/')
 
@@ -96,7 +96,7 @@ class NewItemTest(TestCase):
         self.assertEqual(Item.objects.count(), 1)
         new_item = Item.objects.first()
         self.assertEqual(new_item.text, 'A new item for an existing list')
-        self.assertEqual(new_item.item_list, correct_list)
+        self.assertEqual(new_item.parent_list, correct_list)
 
     def test_redirects_to_list_view(self):
         other_list = List.objects.create()
