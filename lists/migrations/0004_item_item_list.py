@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='item',
-            name='item_list',
+            name='parent_list',
             field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, to='lists.List'),
         ),
     ]
