@@ -6,6 +6,7 @@ from selenium.common.exceptions import WebDriverException
 
 MAX_WAIT = 10
 
+
 class FunctionalTest(StaticLiveServerTestCase):
 
     def setUp(self):
@@ -40,4 +41,5 @@ class FunctionalTest(StaticLiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
-
+    def get_item_input_box(self):
+        return self.browser.find_element_by_id('id_text')
