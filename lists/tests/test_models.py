@@ -34,10 +34,9 @@ class ListAndItemModelsTest(TestCase):
         self.assertEqual(second_saved_item.text, 'Item the second')
         self.assertEqual(second_saved_item.parent_list, list_)
 
-
     def test_cannot_save_empty_list_items(self):
         list_ = List.objects.create()
-        item = Item(parent_list = list_, text = '')
+        item = Item(parent_list=list_, text='')
         with self.assertRaises(ValidationError):
             item.save()
             item.full_clean()
