@@ -1,2 +1,2 @@
-django==1.11
-python-dotenv
+Django==1.11.20
+python-dotenv==0.20.0
