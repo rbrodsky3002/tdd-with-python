@@ -1,0 +1,48 @@
+<!DOCTYPE html>							<!DOCTYPE html>
+<html>								<html>
+    <head>						      |	<head>
+        <meta charset="utf-8">				      |	  <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">   |	  <meta name="viewport" content="width=device-width">
+        <title>Javascript tests</title>			      |	  <title>Javascript tests</title>
+        <link rel="stylesheet" href="qunit-2.19.1.css">	      |	  <link rel="stylesheet" href="qunit-2.19.1.css">
+    </head>						      |	</head>
+    <body>						      |	<body>
+        <div id="qunit"></div>				      |	  <div id="qunit"></div>
+        <div id="qunit-fixture"></div>			      |	  <div id="qunit-fixture"></div>
+
+<form>							      |	  <form>
+            <input name="text" />			      |	    <input name="text" />
+            <div class="has-error">Error text</div>	      |	    <div class="has-error">Error text</div>
+        </form>						      |	  </form>
+        						      <
+        <script src="../jquery-3.6.0.js"></script>	      <
+        <script src="qunit-2.19.1.js"></script>		      <
+
+<!--							      |	  <script src="../jquery-3.6.0.js"></script>
+        <script>					      |	  <script src="qunit-2.19.1.js"></script>
+            QUnit.test("smoke test", function (assert) {      |
+                            assert.equal(1, 1, "Math works!") |	  <script>
+                        });				      <
+                               				      <
+        </script>					      <
+        -->						      <
+        <script>					      <
+            Qunit.test("smoke test2", function (assert) {     <
+                            assert.equal($('.has-error').is(' <
+                            $('.has-error').hide();	      <
+                            assert.equal($('.has-error').is(' <
+               }); 					      <
+            						      <
+        </script>					      <
+    </body>						      <
+</html>							      <
+
+							      >	QUnit.test("smoke test", function (assert) {
+							      >	  assert.equal($('.has-error').is(':visible'), true);
+							      >	  $('.has-error').hide();
+							      >	  assert.equal($('.has-error').is(':visible'), false);
+							      >	});
+							      >
+							      >	  </script>
+							      >	</body>
+							      >	</html>
